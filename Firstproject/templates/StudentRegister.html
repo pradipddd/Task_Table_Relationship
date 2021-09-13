@@ -1,0 +1,49 @@
+{% extends 'Base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block title %}
+    <title>StudentRegister</title>
+    {% endblock %}
+
+
+
+    {% block first %}
+
+    <div class='container' style="width: 60%;">
+        
+        <form method="POST" class='jumbotron'>
+            
+            {% csrf_token %}
+            {{form|crispy}}
+            <br>
+            <input type="submit" value="submit" class='btn btn-success'>
+            
+        </form>
+        <a class="nav-link" href="{% url 'student_list' %}"><button class='btn btn-primary'>StudentShow</button></a>
+
+    </div>
+
+
+    {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

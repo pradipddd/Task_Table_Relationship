@@ -1,0 +1,85 @@
+{% extends 'Base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block title %}
+    <title>LecturerShow</title>
+    {% endblock %}
+
+
+
+    {% block first %}
+    <table class="table table-dark">
+        <tr>
+            
+            <th>Lecture Department</th>
+            <th>Lecture sal</th>
+            <th>Lecture name</th>
+            <th>#</th>
+            <th>#</th>
+           
+        </tr>
+    
+
+        {% for i in lec %}
+        <tr>
+            <td>{% for j in i.department.all %}
+
+             {{j}}&nbsp;
+            {% endfor %}</td>
+            
+            <td>{{i.lec_sal}}</td>
+            <td>{{i.lec_name}}</td>
+            <td><a href="{% url 'lecturer_update' i.id %}"><button class='btn btn-warning'>Update</button></a></td>
+            <td><a href="{% url 'lecturer_delete' i.id %}"><button class='btn btn-danger'>Delete</button></a></td>
+    
+            
+           
+        </tr>
+        {% endfor %}
+    </table> 
+
+
+    {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,46 @@
+{% extends 'Base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block title %}
+    <title>SearchDepartement</title>
+    {% endblock %}
+
+
+
+    {% block first %}
+<div>
+    <form class="form-inline my-2 my-lg-0" method='POST'>
+        {% csrf_token %}
+        <!-- <input type="radio" name="dep" value="Department"/>Department
+        <input type="radio" name="dep" value="Student"/>Student
+        <input type="radio" name="dep" value="Lecturer"/>Lecturer
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" name='search' aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>  -->
+     
+        
+        
+        <input type="radio" name="dep" value="Department"/>Department
+
+        
+        <input type="radio" name="dep" value="Student"/>Student
+    
+        
+        <input type="radio" name="dep" value="Lecturer"/>Lecturer
+      
+        
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" name='search' aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>  
+     {% if messages %}
+        {% for msg in messages %}
+        {{msg}}
+        {% endfor %}
+     {% endif %}
+    
+
+
+    </form>
+</div>
+
+
+    {% endblock %}

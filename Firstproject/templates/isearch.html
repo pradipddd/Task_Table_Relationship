@@ -1,0 +1,127 @@
+{% extends 'Base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block title %}
+    <title>Search</title>
+    {% endblock %}
+
+{% block first %}
+<div class='container' style="width: 60%;">
+    <form method='post' class='jumbotron' >
+        {% csrf_token %}
+
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" name='search' aria-label="Search"><br>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>  
+
+{% if dep %}
+
+<table class="table table-info">
+    <h3 style="text-align: center;">Student-Info</h3>
+    <tr>
+        <th>Student_Dep_name</th>
+        <th>Student_Rno</th>
+        <th>Student_Name</th>
+        <th>Student_Marks</th>   
+    </tr>
+
+    {% for i in stu_dep %}
+    <tr>
+        <td>{{i.department}}</td>
+        <td>{{i.stu_rn}}</td>
+        <td>{{i.stu_name}}</td>
+        <td>{{i.stu_marks}}</td>   
+    </tr>
+    {% endfor %}  
+</table> 
+
+<br><br><br>
+
+<table class="table table-info">
+    <h3 style="text-align: center;">Lacturer-Info</h3>
+    <tr>
+        <th>Lecture Department</th>
+        <th>Lecture sal</th>
+        <th>Leture name</th>  
+    </tr>
+
+    {% for i in lec_dep %}
+    <tr>
+        <td>{% for j in i.department.all %}
+
+         {{j}}&nbsp;
+        {% endfor %}</td>
+        
+        <td>{{i.lec_sal}}</td>
+        <td>{{i.lec_name}}</td>
+         
+    </tr>
+    {% endfor %}
+</table> 
+
+
+{% elif stu %}
+
+<table class="table table-info">
+    <h3 style="text-align: center;"> Student-Info</h3>
+    <tr>
+        <th>Student_Dep_name</th>
+        <th>Student_Rno</th>
+        <th>Student_Name</th>
+        <th>Student_Marks</th>   
+    </tr>
+
+    {% for i in stu %}
+    <tr>
+        <td>{{i.department}}</td>
+        <td>{{i.stu_rn}}</td>
+        <td>{{i.stu_name}}</td>
+        <td>{{i.stu_marks}}</td>
+        
+    </tr>
+    {% endfor %}  
+</table> 
+
+
+{% elif lec %}
+
+<table class="table table-info">
+    <h3 style="text-align: center;">Lacturer-Info</h3>
+    <tr>  
+        <th>Lecture Department</th>
+        <th>Lecture sal</th>
+        <th>Leture name</th>  
+    </tr>
+
+    {% for i in lec %}
+    <tr>
+        <td>{% for j in i.department.all %}
+
+         {{j}}&nbsp;
+        {% endfor %}</td>
+        
+        <td>{{i.lec_sal}}</td>
+        <td>{{i.lec_name}}</td>
+          
+    </tr>
+    {% endfor %}
+</table> 
+{% elif abc %}
+
+
+
+{% else %}
+<h4>Recored Not Found</h4>
+
+{% endif %}
+
+    </form>
+</div>
+
+
+
+{% endblock %}
+
+
+
+
